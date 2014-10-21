@@ -1,39 +1,21 @@
-<!DOCTYPE html>
 <html>
-<body>
-
-<form action="tryjs_submitpage.htm" onsubmit="return myFunction()">
-Name (max 10 characters): <input type="text" id="fname" size="20"><br>
-Age (from 1 to 100): <input type="text" id="age" size="20"><br>
-E-mail: <input type="text" id="email" size="20"><br>
-<br>
-<input type="submit" value="Submit"> 
-</form>
-
-<script>
-function myFunction() {
-    var at = document.getElementById("email").value.indexOf("@");
-    var age = document.getElementById("age").value;
-    var fname = document.getElementById("fname").value;
-    submitOK = "true";
-
-    if (fname.length>10) {
-        alert("The name may have no more than 10 characters");
-        submitOK = "false";
-    } 
-    if (isNaN(age)||age<1||age>100) {
-        alert("The age must be a number between 1 and 100");
-        submitOK = "false";
+    <form action="index.html" onSubmit="return playFunction()">
+        <br/>URL <input type="text" id="videoUrl"/>
+        <br/><p id="urlDup"/>
+        <input type="submit" value="Submit"> 
+    </form>
+  <br/>
+  <br/>
+  <object width="420" height="315" id="mediaElem"
+    data="http://www.youtube.com/v/XGSy3_Czz8k">
+  </object>
+  
+  <script>
+    function playFunction()
+    {
+        var text = document.getElementById("videoUrl").val();
+        //document.getElementById("mediaElem").data = text;
+        document.getElementById("urlDup").innerHTML = "Url: " + text;
     }
-    if (at==-1) {
-        alert("Not a valid e-mail!");
-        submitOK = "false";
-    }
-    if (submitOK=="false") {
-        return false;
-    }
-}
-</script>
-
-</body>
+  </script>
 </html>
